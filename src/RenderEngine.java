@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class RenderEngine {
+public class RenderEngine extends JPanel {
     private ArrayList<Displayable> renderList;
 
     public RenderEngine(JFrame jFrame) {
@@ -15,7 +15,15 @@ public class RenderEngine {
         }
     }
 
-    public void update(){
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        for (Displayable displayable : renderList){
+            displayable.draw(g);
+        }
+    }
 
+    public void update(){
+        repaint();
     }
 }

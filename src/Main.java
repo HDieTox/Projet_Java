@@ -1,5 +1,7 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 public class Main {
     JFrame frame;
@@ -14,8 +16,14 @@ public class Main {
 
         renderEngine = new RenderEngine(frame);
 
-        Timer renderTimer = new Timer(50,(time)-> renderEngine.update());
 
+
+        DynamicSprite hero = new DynamicSprite(200,300,
+                ImageIO.read(new File("./img/heroTileSheetLowRes.png")),48,50);
+        renderEngine.addToRenderList(hero);
+
+
+        Timer renderTimer = new Timer(50,(time)-> renderEngine.update());
         renderTimer.start();
 
         frame.getContentPane().add(renderEngine);

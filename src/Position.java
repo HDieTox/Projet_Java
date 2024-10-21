@@ -23,7 +23,3 @@ public class Position {
         };
     }
 }
-
-enum Direction {
-    UP,DOWN,LEFT,RIGHT;
-}
