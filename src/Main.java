@@ -8,7 +8,7 @@ public class Main {
 
     RenderEngine renderEngine;
 
-    public Main() {
+    public Main() throws Exception {
         frame = new JFrame("Java Project");
         frame.setSize(400,600);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -18,8 +18,8 @@ public class Main {
 
 
 
-        DynamicSprite hero = new DynamicSprite(200,300,
-                ImageIO.read(new File("./img/heroTileSheetLowRes.png")),48,50);
+        DynamicSprite hero = new DynamicSprite(ImageIO.read(new File("./img/heroTileSheetLowRes.png")),
+                200,300,48,50);
         renderEngine.addToRenderList(hero);
 
 
@@ -30,7 +30,7 @@ public class Main {
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)  throws Exception{
         Main main = new Main();
 
 
