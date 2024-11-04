@@ -5,7 +5,7 @@ public class DynamicSprite extends SolidSprite {
     protected int speed = 5;
     protected final int spriteSheetNumberOfColumn = 10;
     protected int timeBetweenFrame = 200;
-    protected Direction direction;
+    protected Direction direction = Direction.UP;
 
     public DynamicSprite(Image image, double x, double y, double width, double height) {
         super(image, x, y, width, height);

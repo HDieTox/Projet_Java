@@ -1,5 +1,5 @@
 public enum Direction {
-    UP(0), DOWN(2), LEFT(3), RIGHT(1);
+    UP(2), DOWN(0), LEFT(1), RIGHT(3);
     private int frameLineNumber;
 
     Direction(int frameLineNumber) {

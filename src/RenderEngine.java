@@ -15,6 +15,12 @@ public class RenderEngine extends JPanel {
         }
     }
 
+    public void fullAddToRenderList(ArrayList<Displayable> displayable){
+        if (!renderList.contains(displayable)){
+            renderList.addAll(displayable);
+        }
+    }
+
     @Override
     public void paint(Graphics g) {
         super.paint(g);
