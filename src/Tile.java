@@ -1,13 +1,24 @@
 import java.awt.*;
 
-public class Tile {
+public class Tile implements Displayable {
+    protected Image image;
     protected int x;
     protected int y;
-    protected Image type;
+    protected double width;
+    protected double height;
+    protected int scale;
 
-    public Tile(int x, int y, Image type) {
+    public Tile(Image image, int x, int y, double width, double height,int scale) {
         this.x = x;
         this.y = y;
-        this.type = type;
+        this.image = image;
+        this.width = width;
+        this.height = height;
+        this.scale = scale;
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        g.drawImage(image, (int) (x*width), (int) (y*height), null);
     }
 }

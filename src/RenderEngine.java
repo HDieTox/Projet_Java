@@ -2,10 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class RenderEngine extends JPanel {
-    private ArrayList<Displayable> renderList;
+public class RenderEngine extends JPanel implements Engine {
+    private final ArrayList<Displayable> renderList;
 
-    public RenderEngine(JFrame jFrame) {
+    public RenderEngine() {
         this.renderList = new ArrayList<>();
     }
 
@@ -16,8 +16,8 @@ public class RenderEngine extends JPanel {
     }
 
     public void fullAddToRenderList(ArrayList<Displayable> displayable){
-        if (!renderList.contains(displayable)){
-            renderList.addAll(displayable);
+        for (Displayable displayableElement : displayable){
+            addToRenderList(displayableElement);
         }
     }
 
