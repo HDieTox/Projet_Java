@@ -1,6 +1,10 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
+import java.util.TimerTask;
 
 public class Main {
     JFrame frame;
@@ -14,6 +18,7 @@ public class Main {
         frame.setSize(650,650);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
 
         DynamicSprite hero = new DynamicSprite(ImageIO.read(new File("C:\\Users\\tomco\\IdeaProjects\\Projet_Java\\src\\img\\heroTileSheetLowRes.png"))
                 ,200,300,48,50,false, 1);
@@ -44,6 +49,7 @@ public class Main {
     }
 
     public static void main(String[] args)  throws Exception{
-        Main main = new Main();
+
+        new TitleScreen();
     }
 }

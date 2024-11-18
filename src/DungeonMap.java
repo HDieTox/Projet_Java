@@ -16,7 +16,7 @@ public class DungeonMap {
         return map.get(y*width+x);
     }
 
-    public DungeonMap() {
+    public DungeonMap(String mapName) {
         try {
             Image imageTree = ImageIO.read(new File("C:\\Users\\tomco\\IdeaProjects\\Projet_Java\\src\\img\\tree.png"));
             Image imageGrass = ImageIO.read(new File("C:\\Users\\tomco\\IdeaProjects\\Projet_Java\\src\\img\\grass.png"));
@@ -35,7 +35,7 @@ public class DungeonMap {
             int imageWaterWidth = imageWater.getWidth(null);
             int imageWaterHeight = imageWater.getHeight(null);
 
-            FileReader reader = new FileReader("C:\\Users\\tomco\\IdeaProjects\\Projet_Java\\src\\data\\map1.txt");
+            FileReader reader = new FileReader(mapName);
             BufferedReader bufferedReader = new BufferedReader(reader);
             // Getting the MAP SIZE
             String line = bufferedReader.readLine();
