@@ -1,10 +1,6 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
-import java.util.TimerTask;
 
 public class Main {
     JFrame frame;
@@ -20,8 +16,12 @@ public class Main {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
 
-        DynamicSprite hero = new DynamicSprite(ImageIO.read(new File("C:\\Users\\tomco\\IdeaProjects\\Projet_Java\\src\\img\\heroTileSheetLowRes.png"))
-                ,200,300,48,50,false, 1);
+        DynamicTile hero = new DynamicTile(ImageIO.read(new File("C:\\Users\\tomco\\IdeaProjects\\Projet_Java\\src\\img\\heroTileSheetLowRes.png"))
+                ,200,300,48,50,false, 1,false);
+        Enemy dragon = new Enemy(ImageIO.read(new File("C:\\Users\\tomco\\IdeaProjects\\Projet_Java\\src\\img\\dragon.png"))
+                ,465,75, 64,64,true,2, true);
+
+        dragon.setDirection(Direction.LEFT);
 
         renderEngine = new RenderEngine();
         physicEngine = new PhysicEngine();
@@ -35,20 +35,26 @@ public class Main {
         physicTimer.start();
         gameTimer.start();
 
-        frame.getContentPane().add(renderEngine);
-        frame.setVisible(true);
+
 
         DungeonMap map = new DungeonMap("C:\\Users\\tomco\\IdeaProjects\\Projet_Java\\src\\data\\map1.txt");
 
         renderEngine.fullAddToRenderList(map.spritesToDisplayable());
         renderEngine.addToRenderList(hero);
+        renderEngine.addToRenderList(dragon);
         physicEngine.addToSolidTilesList(map.getSolidSpritesList());
         physicEngine.addToMovingSprites(hero);
+        physicEngine.addToMovingSprites(dragon);
+
+        gameEngine.addToEnemyList(dragon);
+
+        frame.getContentPane().add(renderEngine);
+        frame.setVisible(true);
 
         frame.addKeyListener(gameEngine);
     }
 
-    public static void main(String[] args)  throws Exception{
+    public static void main(String[] args){
 
         new TitleScreen();
     }

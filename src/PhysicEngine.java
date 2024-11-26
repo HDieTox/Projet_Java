@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class PhysicEngine implements Engine {
-    private final ArrayList<DynamicSprite> movingTilesList;
+    private final ArrayList<DynamicTile> movingTilesList;
     private final ArrayList<Tile> solidTilesList;
 
     public PhysicEngine() {
@@ -9,7 +9,7 @@ public class PhysicEngine implements Engine {
         solidTilesList = new ArrayList<>();
     }
 
-    public void addToMovingSprites(DynamicSprite sprite) {
+    public void addToMovingSprites(DynamicTile sprite) {
         if (!movingTilesList.contains(sprite)) {
             movingTilesList.add(sprite);
         }
@@ -19,14 +19,13 @@ public class PhysicEngine implements Engine {
         for (Tile tile : tiles) {
             if (!solidTilesList.contains(tile)) {
                 solidTilesList.add(tile);
-                System.out.println(tile.x + " " + tile.y);
             }
         }
     }
 
     @Override
     public void update() {
-        for (DynamicSprite dynamicSprite : movingTilesList) {
+        for (DynamicTile dynamicSprite : movingTilesList) {
             dynamicSprite.moveIfPossible(solidTilesList);
         }
     }

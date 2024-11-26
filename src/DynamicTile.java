@@ -2,16 +2,18 @@ import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
-public class DynamicSprite extends SolidSprite {
+public class DynamicTile extends SolidTile {
     protected boolean isMoving;
     protected int speed = 5;
     protected final int spriteSheetNumberOfColumn = 10;
     protected int timeBetweenFrame = 200;
     protected Direction direction = Direction.UP;
+    protected boolean fly;
 
-    public DynamicSprite(Image image, int x, int y, double width, double height, boolean isMoving, int scale) {
+    public DynamicTile(Image image, int x, int y, double width, double height, boolean isMoving, int scale, boolean fly) {
         super(image, x, y, width, height, scale);
         this.isMoving = isMoving;
+        this.fly = fly;
     }
 
     public void setDirection(Direction direction) {
@@ -39,10 +41,9 @@ public class DynamicSprite extends SolidSprite {
             }
 
             for (Tile t : tiles){
-                if ((t.scale > 0) && (t!=this)){
+                if ((this.scale > 0) && (t!=this)){
                     if (intersect(t,moved)){
-                        System.out.println("Intersection");
-                        return false;
+                        return t.scale < 2 && this.fly;
                     }
                 }
             }
@@ -73,8 +74,6 @@ public class DynamicSprite extends SolidSprite {
             move();
         }
     }
-
-
 
     @Override
     public void draw(Graphics g) {

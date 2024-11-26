@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class TitleScreen extends JFrame {
     public TitleScreen() {
@@ -19,15 +17,12 @@ public class TitleScreen extends JFrame {
 
         JButton button = new JButton("Start the Game");
         button.setFont(new Font("Arial", Font.BOLD, 24));
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                try {
-                    Main main = new Main();
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
+        button.addActionListener(lambda -> {
+            dispose();
+            try {
+                new Main();
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
             }
         });
 

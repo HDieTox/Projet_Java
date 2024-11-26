@@ -1,11 +1,17 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 public class GameEngine implements Engine, KeyListener {
-    DynamicSprite hero;
+    DynamicTile hero;
+    ArrayList<Enemy> enemies = new ArrayList<>();
 
-    public GameEngine(DynamicSprite hero) {
+    public GameEngine(DynamicTile hero) {
         this.hero = hero;
+    }
+
+    public void addToEnemyList(Enemy e){
+        enemies.add(e);
     }
 
     @Override
@@ -40,12 +46,17 @@ public class GameEngine implements Engine, KeyListener {
                 break;
             case KeyEvent.VK_CONTROL:
                 hero.speed = 5;
+                break;
         }
     }
     @Override
     public void keyTyped(KeyEvent e) {}
     @Override
-    public void update() {}
+    public void update() {
+        for (Enemy e : enemies) {
+            e.xStrafe();
+        }
+    }
 
 
 }

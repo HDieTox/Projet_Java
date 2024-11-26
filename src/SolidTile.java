@@ -1,9 +1,9 @@
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
-public class SolidSprite extends Tile {
+public class SolidTile extends Tile {
 
-    public SolidSprite(Image image, int x, int y, double width, double height, int scale) {
+    public SolidTile(Image image, int x, int y, double width, double height, int scale) {
         super(image, x, y, width, height,scale);
     }
 
@@ -12,7 +12,7 @@ public class SolidSprite extends Tile {
     }
 
     public Rectangle2D getHitBox(Tile tile) {
-        return new Rectangle2D.Double(tile.x,tile.y, tile.width, tile.height);
+        return new Rectangle2D.Double(tile.x*tile.width,tile.y*tile.height, tile.width, tile.height);
     }
 
     public boolean intersect(Tile tile,Rectangle2D.Double hitBox){
